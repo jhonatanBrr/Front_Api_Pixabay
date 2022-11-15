@@ -15,7 +15,7 @@ export class QueriesServiceService {
 
   consultImage(search:string): Promise<any> { 
     return new Promise((resolve, reject) => {
-      this.http.get(`${this.host.url}&q=${search}`)
+      this.http.get(`${this.host.url}&q=${search}&per_page=200`)
         .subscribe(
           data => {
             resolve(data);
@@ -29,7 +29,7 @@ export class QueriesServiceService {
 
   consultCategories(categorie:string): Promise<any> { 
     return new Promise((resolve, reject) => {
-      this.http.get(`${this.host.url}&category=${categorie}`)
+      this.http.get(`${this.host.url}&category=${categorie}&per_page=200`)
         .subscribe(
           data => {
             resolve(data);
