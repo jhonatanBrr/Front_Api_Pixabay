@@ -34,7 +34,6 @@
     <section class="overlay" *ngIf="_preview">
         <div class="card-img">
             <img class="preview-img" [src]="_preview?.webformatURL"> 
-            
             <div class="info">
                 <div class="tags">
                     <div  class="tag" *ngFor="let tag of _preview.tagsArray">
@@ -48,6 +47,9 @@
                 <div class="items_info">
                     <i class="fa-solid fa-eye fa-xl"></i>
                     <p>{{_preview?.views ?? '0'}}</p>
+                </div>
+                <div class="items_info">
+                    <a href="{{_preview?.pageURL}}">Official website</a>
                 </div>
             </div>
             <div class="actions">

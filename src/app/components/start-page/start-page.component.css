@@ -140,6 +140,7 @@ img{
     }
 }
 
+
 /* overlay */
 
 .overlay{
@@ -156,7 +157,7 @@ img{
     justify-content: center;
 }
 .card-img{
-    height: 75vh;
+    height: 70vh;
     width: 350px;
     background: #ffffff;
     display: flex;
@@ -167,15 +168,29 @@ img{
     padding: 5px;
 }
 
+@media (max-height: 900px) {
+    .card-img{
+        height: 75vh;
+    }
+
+    .preview-img{
+        height: 50%;    
+    }
+
+    .info{
+        height: 50%;
+    }
+}
+
 .preview-img{
-    height: 100%;
+    height: 60%;
     width: 100%;
     object-fit: cover !important;
     border-radius: 10px 10px 0px 0px !important;
 }
 
 .info{
-    height: 100%;
+    height: 40%;
     width: 100%;
 }
 
