@@ -1,0 +1,58 @@
+<div class="container">
+    <header>
+        <div class="logo">
+            <h1 id="title">Api Pixabay</h1>
+            <div id="content-mode" class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" [(ngModel)]="dark" (click)="mode()" id="mode">
+            </div>
+        </div>
+        <form action="">
+            <input type="text" id="search-bar" class="search-bar" [(ngModel)]="search_bar" [ngModelOptions]="{standalone: true}" (keyup.enter)="queryImage()"  placeholder="Buscar">
+        </form>
+        <div class="categories" id="categories">
+            <a (click)="queryCategories('all', 0)" class="active">Home</a>
+            <a (click)="queryCategories('computer',1)">computer</a>
+            <a (click)="queryCategories('science',2)">science</a>
+            <a (click)="queryCategories('business',3)">business</a>
+            <a (click)="queryCategories('nature',4)">nature</a>
+            <a (click)="queryCategories('food',5)">food</a>
+        </div>
+    </header>
+
+    <section class="grid">
+        <div class="row">
+            <ng-container *ngFor="let img of images">
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">                        
+                    <div class="item">
+                        <img (click)="preview(img)" [src]="img.webformatURL">
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </section>
+
+    <section class="overlay" *ngIf="_preview">
+        <div class="card-img">
+            <img class="preview-img" [src]="_preview?.webformatURL"> 
+            
+            <div class="info">
+                <div class="tags">
+                    <div  class="tag" *ngFor="let tag of _preview.tagsArray">
+                        {{tag}}
+                    </div>
+                </div>
+                <div class="items_info">
+                    <i class="fa-solid fa-thumbs-up fa-xl"></i>
+                    <p>{{_preview?.likes ?? '0'}}</p>
+                </div>
+                <div class="items_info">
+                    <i class="fa-solid fa-eye fa-xl"></i>
+                    <p>{{_preview?.views ?? '0'}}</p>
+                </div>
+            </div>
+            <div class="actions">
+                <button (click)="previewClose()" type="button" class="btn btn-danger">Cerrar</button>
+            </div>
+        </div>
+    </section>
+</div>
