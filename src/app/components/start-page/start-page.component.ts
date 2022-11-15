@@ -38,24 +38,31 @@ export class StartPageComponent implements OnInit {
     categories.forEach((e:any) => {
       e.classList.remove('active')
     })
-    categories[index].classList.add('active')    
-    let res:any = await this.Queries.consultCategories(categorie)
-    console.log(res);
-    if (res?.hits?.length > 0) {
-      this.store.dispatch(loadedImages(
-        { images: res.hits }
-      ))
-    }
+    categories[index].classList.add('active')
+    try {
+      let res:any = await this.Queries.consultCategories(categorie)
+      console.log(res);
+      if (res?.hits?.length > 0) {
+        this.store.dispatch(loadedImages(
+          { images: res.hits }
+        ))
+      }
+    } catch (error) {
+      console.log(error);
+    }    
   }
 
   async queryImage(){
-    let res:any = await this.Queries.consultImage(this.search_bar);
-    console.log(res);
-    console.log(res.hits);
-    if (res?.hits?.length > 0) {
-      this.store.dispatch(loadedImages(
-        { images: res.hits }
-      ))
+    try {
+      let res:any = await this.Queries.consultImage(this.search_bar);
+      if (res?.hits?.length > 0) {
+        this.store.dispatch(loadedImages(
+          { images: res.hits }
+        ))
+      }
+    } catch (error) {
+      console.log(error);
+      
     }
   }
 
