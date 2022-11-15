@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { image } from 'src/interfaces/image.interface';
 import { QueriesServiceService } from 'src/servicios/queries/queries-service.service';
+import { Store } from '@ngrx/store'
+import { loadedImages, loadImages, previewImages } from 'src/app/state/actions/images.actions';
+import { Observable } from 'rxjs';
+import { selectListImages } from 'src/app/state/selectors/items.selectors';
+
 
 @Component({
   selector: 'app-start-page',
@@ -8,18 +14,23 @@ import { QueriesServiceService } from 'src/servicios/queries/queries-service.ser
 })
 export class StartPageComponent implements OnInit {
 
-  images:any[] = [];
   search_bar:string = '';
   dark:boolean = false;
-  _preview:any = null
+  _preview:any = null;
+  tags:any[] = []
   
+  images$: Observable<any> = new Observable();
+
   constructor(
-    private Queries:QueriesServiceService
+    private Queries:QueriesServiceService,
+    private store:Store<any>
   ) { }
 
 
-  async ngOnInit() {  
-    this.queryImage()
+  async ngOnInit() {
+    this.store.dispatch(loadImages())
+    this.queryImage();
+    this.images$ = this.store.select(selectListImages)
   }
 
   async queryCategories(categorie:string,index:number){
@@ -31,15 +42,20 @@ export class StartPageComponent implements OnInit {
     let res:any = await this.Queries.consultCategories(categorie)
     console.log(res);
     if (res?.hits?.length > 0) {
-      this.images = res.hits
+      this.store.dispatch(loadedImages(
+        { images: res.hits }
+      ))
     }
   }
 
   async queryImage(){
     let res:any = await this.Queries.consultImage(this.search_bar);
     console.log(res);
+    console.log(res.hits);
     if (res?.hits?.length > 0) {
-      this.images = res.hits
+      this.store.dispatch(loadedImages(
+        { images: res.hits }
+      ))
     }
   }
 
@@ -59,12 +75,16 @@ export class StartPageComponent implements OnInit {
   
   }
 
-  preview(img:any){
+  preview(img:image){
     if (img.tags.split(',')?.length > 0) {
-      img.tagsArray = img.tags.split(',')
+      this.tags = img.tags.split(',')
     }else{
-      img.tagsArray = [];
+      this.tags = [];
     }
+
+    this.store.dispatch(previewImages(
+      { imagePreview: [ img ] }
+    ))
     this._preview = img 
   }
 

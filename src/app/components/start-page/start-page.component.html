@@ -21,7 +21,7 @@
 
     <section class="grid">
         <div class="row">
-            <ng-container *ngFor="let img of images">
+            <ng-container *ngFor="let img of images$ | async">
                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">                        
                     <div class="item">
                         <img (click)="preview(img)" [src]="img.webformatURL">
@@ -36,7 +36,7 @@
             <img class="preview-img" [src]="_preview?.webformatURL"> 
             <div class="info">
                 <div class="tags">
-                    <div  class="tag" *ngFor="let tag of _preview.tagsArray">
+                    <div  class="tag" *ngFor="let tag of tags">
                         {{tag}}
                     </div>
                 </div>
