@@ -45,6 +45,11 @@ header form {
     margin-bottom: 20px;
 }
 
+header .content-search-bar{
+    display: flex;
+    justify-content: center;
+}
+
 header .search-bar{
     width: 70%;
     height: 40px;

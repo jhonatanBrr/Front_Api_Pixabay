@@ -7,7 +7,13 @@
             </div>
         </div>
         <form action="">
-            <input type="text" id="search-bar" class="search-bar" [(ngModel)]="search_bar" [ngModelOptions]="{standalone: true}" (keyup.enter)="queryImage()"  placeholder="Buscar">
+            <div class="content-search-bar">
+                <input type="text" id="search-bar" class="search-bar" [(ngModel)]="search_bar" [ngModelOptions]="{standalone: true}" (keyup.enter)="queryImage()"  placeholder="Buscar">
+                <button style="border-radius: 15px; margin-left: 10px;" (click)="queryImage()"
+                     type="button" class="btn btn-primary" [disabled]="search_bar.trim() == ''">
+                    <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+                </button>
+            </div>
         </form>
         <div class="categories" id="categories">
             <a (click)="queryCategories('all', 0)" class="active">Home</a>
