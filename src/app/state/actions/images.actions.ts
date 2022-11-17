@@ -12,5 +12,5 @@ export const loadedImages = createAction(
 
 export const previewImages = createAction(
   '[Image Preview] Loaded success',
-  props<{ imagePreview:image[] }>()
+  props<{ imagePreview:boolean }>()
 )

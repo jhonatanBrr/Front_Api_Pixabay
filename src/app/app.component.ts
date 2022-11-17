@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ViewImageListenServiceService } from 'src/servicios/Listens/view-image-listen-service.service';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'prueba_bolsiyo';
 
-
+  constructor(
+    private ViewImageListen:ViewImageListenServiceService
+  ) { 
+    this.ViewImageListen.initListenPreviewImage();
+  }
 }

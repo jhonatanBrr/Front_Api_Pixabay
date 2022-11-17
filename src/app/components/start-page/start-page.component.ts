@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store'
 import { loadedImages, loadImages, previewImages } from 'src/app/state/actions/images.actions';
 import { Observable } from 'rxjs';
 import { selectListImages } from 'src/app/state/selectors/items.selectors';
+import { ViewImageListenServiceService } from 'src/servicios/Listens/view-image-listen-service.service';
 
 
 @Component({
@@ -16,14 +17,14 @@ export class StartPageComponent implements OnInit {
 
   search_bar:string = '';
   dark:boolean = false;
-  _preview:any = null;
   tags:any[] = []
   
   images$: Observable<any> = new Observable();
 
   constructor(
     private Queries:QueriesServiceService,
-    private store:Store<any>
+    private store:Store<any>,
+    public ViewImageListen:ViewImageListenServiceService
   ) { }
 
 
@@ -90,15 +91,8 @@ export class StartPageComponent implements OnInit {
     }
 
     this.store.dispatch(previewImages(
-      { imagePreview: [ img ] }
+      { imagePreview: true}
     ))
-    this._preview = img 
+ 
   }
-
-  previewClose(){
-    this._preview = null;
-  }
-
-  
-
 }
