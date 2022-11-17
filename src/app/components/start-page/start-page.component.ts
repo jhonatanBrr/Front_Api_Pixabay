@@ -20,6 +20,7 @@ export class StartPageComponent implements OnInit {
   tags:any[] = []
   
   images$: Observable<any> = new Observable();
+  OutputimageData:any = {};
 
   constructor(
     private Queries:QueriesServiceService,
@@ -89,7 +90,7 @@ export class StartPageComponent implements OnInit {
     }else{
       this.tags = [];
     }
-
+    this.OutputimageData = { image:img , tags:this.tags };
     this.store.dispatch(previewImages(
       { imagePreview: true}
     ))

@@ -18,7 +18,6 @@ export class ViewImageListenServiceService {
   initListenPreviewImage(){
     this.previewStatus$ = this.store.select(selectPreviewImage)
     this.previewStatus$.subscribe((_preview:boolean) => {
-      console.log(_preview);
       this.preview = _preview
     })
   }

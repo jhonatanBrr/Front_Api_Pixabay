@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { previewImages } from 'src/app/state/actions/images.actions';
 
@@ -9,12 +9,13 @@ import { previewImages } from 'src/app/state/actions/images.actions';
 })
 export class ViewImageComponent implements OnInit {
 
+  @Input() imageData:any = {};
   constructor(
     private store:Store<any>
   ) { }
 
-  ngOnInit(): void {
-
+  ngOnInit() {
+    console.log(this.imageData);
   }
 
   previewClose(){

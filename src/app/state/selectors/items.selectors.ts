@@ -2,9 +2,6 @@ import { createSelector } from '@ngrx/store';
 import { ImagesState } from 'src/interfaces/image.state';
 import { AppState } from '../app.state';
 
-
- 
- 
 export const selectImagesFeature = (state: AppState) => state.imagesList;
  
 export const selectListImages = createSelector(

@@ -1,22 +1,22 @@
 <section class="overlay" >
     <div class="card-img">
-        <img class="preview-img" > <!-- [src]="_preview?.webformatURL"  -->
+        <img class="preview-img" [src]="imageData?.image?.webformatURL">
         <div class="info">
             <div class="tags">
-                <!-- <div  class="tag" *ngFor="let tag of tags">
+                <div  class="tag" *ngFor="let tag of imageData?.tags">
                     {{tag}}
-                </div> -->
+                </div>
             </div>
             <div class="items_info">
                 <i class="fa-solid fa-thumbs-up fa-xl"></i>
-                <!-- <p>{{_preview?.likes ?? '0'}}</p> -->
+                <p>{{imageData?.image?.likes ?? '0'}}</p>
             </div>
             <div class="items_info">
                 <i class="fa-solid fa-eye fa-xl"></i>
-                <!-- <p>{{_preview?.views ?? '0'}}</p> -->
+                <p>{{imageData?.image?.views ?? '0'}}</p>
             </div>
             <div class="items_info">
-                <!-- <a href="{{_preview?.pageURL}}">Official website</a> -->
+                <a href="{{imageData?.image?.pageURL}}">Official website</a>
             </div>
         </div>
         <div class="actions">
