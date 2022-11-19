@@ -91,6 +91,10 @@ header .categories a.active {
     color: black;
 }
 
+header .categories a.active_dark {
+    color: rgb(255, 255, 255);
+}
+
 /*grid content*/
 
 .grid{

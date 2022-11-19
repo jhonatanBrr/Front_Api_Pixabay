@@ -39,8 +39,13 @@ export class StartPageComponent implements OnInit {
     const categories = document.querySelectorAll('#categories a');
     categories.forEach((e:any) => {
       e.classList.remove('active')
+      e.classList.remove('active_dark')
     })
-    categories[index].classList.add('active')
+    if (!this.dark) {
+      categories[index].classList.add('active')
+    }else{
+      categories[index].classList.add('active_dark')  
+    }
     try {
       let res:any = await this.Queries.consultCategories(categorie)
       console.log(res);
@@ -69,6 +74,20 @@ export class StartPageComponent implements OnInit {
   }
 
   mode(){
+    const categories = document.querySelectorAll('#categories a');
+    categories.forEach((category:any) => {
+      if (category.classList[0] == 'active') {
+        if (!this.dark) {
+          category.classList.remove('active')
+          category.classList.add('active_dark')
+        }
+      }else if(category.classList[0] == 'active_dark'){
+        if (this.dark) {
+          category.classList.remove('active_dark')
+          category.classList.add('active')
+        }
+      }
+    })
     const body = document.querySelector('#body_app')
     const searchInput = document.querySelector('#search-bar')
     const title = document.querySelector('#title')
