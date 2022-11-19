@@ -1,6 +1,6 @@
 body {
     background: #f3f3f3;
-    height: 100vh !important;
+    min-height: 100vh !important;
 }
 
 .dark{

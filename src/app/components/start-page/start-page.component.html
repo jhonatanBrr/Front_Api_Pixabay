@@ -1,29 +1,29 @@
+<header id="header">
+    <div class="logo">
+        <h1 id="title">Api Pixabay</h1>
+        <div id="content-mode" class="form-check form-switch">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="dark" (click)="mode()" id="mode">
+        </div>
+    </div>
+    <form action="">
+        <div class="content-search-bar">
+            <input type="text" id="search-bar" class="search-bar" [(ngModel)]="search_bar" [ngModelOptions]="{standalone: true}" (keyup.enter)="queryImage()"  placeholder="Buscar">
+            <button style="border-radius: 15px; margin-left: 10px;" (click)="queryImage()"
+                 type="button" class="btn btn-primary" [disabled]="search_bar.trim() == ''">
+                <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+            </button>
+        </div>
+    </form>
+    <div class="categories" id="categories">
+        <a (click)="queryCategories('all', 0)" class="active">Home</a>
+        <a (click)="queryCategories('computer',1)">computer</a>
+        <a (click)="queryCategories('science',2)">science</a>
+        <a (click)="queryCategories('business',3)">business</a>
+        <a (click)="queryCategories('nature',4)">nature</a>
+        <a (click)="queryCategories('food',5)">food</a>
+    </div>
+</header>
 <div class="container">
-    <header>
-        <div class="logo">
-            <h1 id="title">Api Pixabay</h1>
-            <div id="content-mode" class="form-check form-switch">
-                <input type="checkbox" class="form-check-input" [(ngModel)]="dark" (click)="mode()" id="mode">
-            </div>
-        </div>
-        <form action="">
-            <div class="content-search-bar">
-                <input type="text" id="search-bar" class="search-bar" [(ngModel)]="search_bar" [ngModelOptions]="{standalone: true}" (keyup.enter)="queryImage()"  placeholder="Buscar">
-                <button style="border-radius: 15px; margin-left: 10px;" (click)="queryImage()"
-                     type="button" class="btn btn-primary" [disabled]="search_bar.trim() == ''">
-                    <i class="fa-solid fa-magnifying-glass fa-xl"></i>
-                </button>
-            </div>
-        </form>
-        <div class="categories" id="categories">
-            <a (click)="queryCategories('all', 0)" class="active">Home</a>
-            <a (click)="queryCategories('computer',1)">computer</a>
-            <a (click)="queryCategories('science',2)">science</a>
-            <a (click)="queryCategories('business',3)">business</a>
-            <a (click)="queryCategories('nature',4)">nature</a>
-            <a (click)="queryCategories('food',5)">food</a>
-        </div>
-    </header>
 
     <section class="grid">
         <div class="row">

@@ -72,14 +72,17 @@ export class StartPageComponent implements OnInit {
     const body = document.querySelector('#body_app')
     const searchInput = document.querySelector('#search-bar')
     const title = document.querySelector('#title')
+    const header = document.querySelector('#header')
     if (!this.dark) {
       body?.classList.add('dark')
       searchInput?.classList.add('dark_searchInput')
       title?.classList.add('dark_text')
+      header?.classList.add('dark')
     }else{
       body?.classList.remove('dark')
       searchInput?.classList.remove('dark_searchInput')
       title?.classList.remove('dark_text')
+      header?.classList.remove('dark')
     }
   
   }
