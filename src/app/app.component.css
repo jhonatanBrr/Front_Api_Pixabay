@@ -6,36 +6,3 @@ body {
 .dark{
     background: #202124;
 }
-
-/* footer*/
-
-.contact{
-    display: flex;
-}
-
-footer{
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    flex-flow: column nowrap;
-    position: inherit;
-    background: rgb(32, 35, 41);
-    color: rgb(158, 158, 158);
-    padding: 4.5rem 0px;
-    height: calc(50vh - 272px);
-    width: 100%;
-}
-
-li{
-    list-style-type: none;
-    margin: 0px 10px 0px 10px !important;
-}
-ul{
-    padding: 0;
-}
-
-svg{
-    font-size: 25px !important;
-}
